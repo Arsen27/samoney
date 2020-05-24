@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },  
   container: {
     paddingVertical: 100,
-    paddingHorizontal: 15,
+    paddingHorizontal: 10,
     flex: 1,
     backgroundColor: '#01031E',
   },
