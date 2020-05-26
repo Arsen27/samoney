@@ -5,6 +5,7 @@ import SaNumericChange from './SaNumericChange'
 import SaColors from './SaColors'
 import SaTopBar from './SaTopBar'
 import * as SaNavigation from './SaNavigation'
+import SaViewMode from './SaViewMode'
 
 export { 
   SaText, 
@@ -14,4 +15,5 @@ export {
   SaColors, 
   SaTopBar, 
   SaNavigation,
+  SaViewMode,
 }

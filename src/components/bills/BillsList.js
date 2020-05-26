@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, View, FlatList } from 'react-native'
 
-import { SaTitle, SaText } from '../sa'
+import { SaTitle, SaText, SaViewMode } from '../sa'
 
 const DATA = [
   {
@@ -30,13 +30,10 @@ const DATA = [
 export default ({ style }) => {
   return (
     <View style={ style }>
-      <View>
+      <View style={ styles.header }>
         <SaTitle>Bills</SaTitle>
 
-        <View style={ styles.viewMode }>
-          <SaText>1</SaText>
-          <SaText>2</SaText>
-        </View>
+        <SaViewMode />
       </View>
 
       <FlatList 
@@ -49,7 +46,10 @@ export default ({ style }) => {
 }
 
 const styles = StyleSheet.create({
-  viewMode: {
-    flexDirection: 'row'
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingRight: 10,
   }
 })
