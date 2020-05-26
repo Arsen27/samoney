@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { StyleSheet } from 'react-native'
 import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-import { SaText } from './src/components/sa' 
+import { SaTopBar, SaNavigation } from './src/components/sa' 
 
-import { Dashboard, Operations, Statistics, Bills } from './src/views'
+import { Dashboard, Operations, Statistics ,Bills } from './src/views'
 
 async function loadApplication() {
   await Font.loadAsync({
@@ -29,6 +29,15 @@ const Tab = createBottomTabNavigator();
 export default function App() {
 
   const [isReady, setIsReady] = useState(false);
+  const [currentRouteName, setCurrentRouteName] = useState('')
+
+  const updateRouteName = () => {
+    setCurrentRouteName(SaNavigation.getCurrentRouteName())
+  }
+
+  useEffect(() => {
+    updateRouteName()
+  })
 
   if (!isReady) {
     return (
@@ -41,7 +50,13 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer 
+      ref={ SaNavigation.ref }
+      onStateChange={() => {
+        updateRouteName()
+      }}
+    > 
+      <SaTopBar title={ currentRouteName && currentRouteName.toUpperCase() } />
       <Tab.Navigator>
         <Tab.Screen name="Dashboard" component={ Dashboard } />
         <Tab.Screen name="Operations" component={ Operations } />
@@ -53,6 +68,6 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-
+ 
 });
 
