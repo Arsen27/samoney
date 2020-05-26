@@ -1,19 +1,22 @@
 import React from 'react'
 import { StyleSheet, ScrollView, View } from 'react-native'
 
-import { SaText } from '../components/sa'
-
 import { Balance } from '../components/dashboard'
-
-export default ({ navigation }) => {
-  setTimeout(() => {
-    console.log(navigation)
-  }, 2000)
-
+import { OperationsList } from '../components/operations'
+import { BillsList } from '../components/bills'
+ 
+export default () => {
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.content }>
-        <Balance />
+        <Balance />   
+        <OperationsList 
+          headerType='title' 
+          style={{ marginTop: 40 }}
+        />
+        <BillsList 
+          style={{ marginTop: 40 }}
+        />
       </ScrollView>
     </View>
   )
