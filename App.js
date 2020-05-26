@@ -4,11 +4,11 @@ import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
 
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { SaText } from './src/components/sa' 
 
-import Dashboard from './src/views/Dashboard'
+import { Dashboard, Operations, Statistics, Bills } from './src/views'
 
 async function loadApplication() {
   await Font.loadAsync({
@@ -23,7 +23,8 @@ async function loadApplication() {
   });
 }
 
-const Stack = createStackNavigator();
+
+const Tab = createBottomTabNavigator();
 
 export default function App() {
 
@@ -41,9 +42,12 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="dashboard" component={ Dashboard } />
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name="Dashboard" component={ Dashboard } />
+        <Tab.Screen name="Operations" component={ Operations } />
+        <Tab.Screen name="Statistics" component={ Statistics } />
+        <Tab.Screen name="Bills" component={ Bills } />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
