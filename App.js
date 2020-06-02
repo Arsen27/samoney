@@ -58,9 +58,9 @@ export default function App() {
       }}
     > 
       <Tab.Navigator>
-        <Tab.Screen name="Statistics" component={ Statistics } />
         <Tab.Screen name="Dashboard" component={ Dashboard } />
         <Tab.Screen name="Operations" component={ Operations } />
+        <Tab.Screen name="Statistics" component={ Statistics } />
         <Tab.Screen name="Bills" component={ Bills } />
       </Tab.Navigator>
     </NavigationContainer>

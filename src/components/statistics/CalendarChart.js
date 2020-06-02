@@ -55,7 +55,6 @@ export default () => {
           labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
           style: {
             borderRadius: 16,
-            fontFamily: 'muli-regular',
             transform: [{ 'translateX': -25 }],
             position: 'absolute',
           },

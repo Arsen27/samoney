@@ -1,12 +1,29 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, ScrollView, StyleSheet } from 'react-native'
 
-export default () => {
+import { SaTopBar } from '../components/sa'
+
+import { BillsListByCategories } from '../components/bills'
+
+export default ({ route }) => {
   return (
-    <View>
-      <Text>
-        Bills
-      </Text>
+    <View style={ styles.container }>
+      <ScrollView style={ styles.content }>
+        <SaTopBar route={ route } />
+        
+        <BillsListByCategories />
+      </ScrollView>
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#01031E',
+  },
+  content: {
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+  }
+})
