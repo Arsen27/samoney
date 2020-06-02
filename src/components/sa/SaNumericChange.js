@@ -1,15 +1,18 @@
 import React from 'react'
-import { StyleSheet, View, Image } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 
-import { SaNumeric } from './' 
+import { SaNumeric, SaColoredIcon } from './' 
 
 export default ({ sum, currency, type, color, weight, font, size }) => {
+
+  let num = sum
+  if ( num > 1000 ) {
+    num = num.toString().slice(0, -3) + ' ' + num.toString().slice(-3)
+  } 
   
-  let image
-  if ( type === 'income' ) {
-    image = require('../../../assets/icons/income.png')
-  } else if( type === 'waste' ) {
-    image = require('../../../assets/icons/waste.png');
+  const typeIcon = {
+    income: 'increase',
+    waste: 'decrease',
   }
 
   const currencySym = {
@@ -18,7 +21,11 @@ export default ({ sum, currency, type, color, weight, font, size }) => {
 
   return (
     <View style={ styles.container }>
-      <Image source={ image } style={ styles.icon } />
+      <SaColoredIcon 
+        name={ typeIcon[type] } 
+        size={10} 
+        style={ styles.icon }
+      />
 
       <SaNumeric
         style={ styles.sum }
@@ -26,7 +33,7 @@ export default ({ sum, currency, type, color, weight, font, size }) => {
         weight={weight}
         font={font}
         size={size}
-      >{ sum + currencySym[currency] }</SaNumeric>
+      >{ num + currencySym[currency] }</SaNumeric>
     </View>
   )
 }

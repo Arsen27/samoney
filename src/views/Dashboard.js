@@ -4,17 +4,20 @@ import { StyleSheet, ScrollView, View } from 'react-native'
 import { Balance } from '../components/dashboard'
 import { OperationsList } from '../components/operations'
 import { BillsList } from '../components/bills'
- 
-export default () => {
+
+import { SaTopBar } from '../components/sa'
+  
+export default ({ route }) => {
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.content }>
+        <SaTopBar route={ route } />
         <Balance />   
-        <OperationsList 
-          headerType='title' 
+        <BillsList 
           style={{ marginTop: 40 }}
         />
-        <BillsList 
+        <OperationsList 
+          headerType='title' 
           style={{ marginTop: 40 }}
         />
       </ScrollView>
