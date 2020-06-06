@@ -3,12 +3,9 @@ import { StyleSheet, View } from 'react-native'
 
 import { SaNumeric, SaColoredIcon } from './' 
 
-export default ({ sum, currency, type, color, weight, font, size }) => {
+import { numericSpaceFilter } from '../../utils/filters'
 
-  let num = sum
-  if ( num > 1000 ) {
-    num = num.toString().slice(0, -3) + ' ' + num.toString().slice(-3)
-  } 
+export default ({ sum, currency, type, color, weight, font, size }) => {
   
   const typeIcon = {
     income: 'increase',
@@ -33,7 +30,7 @@ export default ({ sum, currency, type, color, weight, font, size }) => {
         weight={weight}
         font={font}
         size={size}
-      >{ num + currencySym[currency] }</SaNumeric>
+      >{ numericSpaceFilter(sum) + currencySym[currency] }</SaNumeric>
     </View>
   )
 }

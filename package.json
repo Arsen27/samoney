@@ -15,6 +15,7 @@
     "@react-navigation/stack": "^5.4.0",
     "expo": "~37.0.3",
     "expo-font": "^8.1.1",
+    "prop-types": "^15.7.2",
     "react": "~16.9.0",
     "react-base": "^0.2.0",
     "react-dom": "~16.9.0",
@@ -26,7 +27,8 @@
     "react-native-screens": "^2.2.0",
     "react-native-svg": "^12.1.0",
     "react-native-vector-icons": "^6.6.0",
-    "react-native-web": "~0.11.7"
+    "react-native-web": "~0.11.7",
+    "toggle-switch-react-native": "^2.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.6",

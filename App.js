@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View, Text } from 'react-native'
 import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import { SaNavigation } from './src/components/sa' 
 
-import { Dashboard, Operations, Statistics, Bills } from './src/views'
+import { Dashboard, Operations, Statistics, Bills, Limits } from './src/views'
 
 async function loadApplication() {
   await Font.loadAsync({
@@ -26,6 +27,7 @@ async function loadApplication() {
 
 
 const Tab = createBottomTabNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function App() {
 
@@ -50,6 +52,37 @@ export default function App() {
     );
   }
 
+  const Home = () => {
+    return (
+      <Tab.Navigator
+        // screenOptions={({ route }) => ({
+        //   tabBarIcon: ({ focused, color, size }) => {
+        //     let iconName;
+        //     if (route.name === 'TabA') {
+        //       iconName = focused
+        //       ? 'ios-information-circle'
+        //       : 'ios-information-circle-outline';
+        //     } else if (route.name === 'TabB') {
+        //       iconName = focused
+        //       ? 'ios-list-box'
+        //       : 'ios-list';
+        //     }
+        //   return <View><Text>1</Text></View>;
+        //   },
+        // })}
+        // tabBarOptions={{
+        //   activeTintColor: 'tomato',
+        //   inactiveTintColor: 'gray',
+        // }}
+      >
+        <Tab.Screen name="Dashboard" component={ Dashboard } />
+        <Tab.Screen name="Operations" component={ Operations } />
+        <Tab.Screen name="Statistics" component={ Statistics } />
+        <Tab.Screen name="Bills" component={ Bills } />
+      </Tab.Navigator>
+    );
+  }
+  
   return (
     <NavigationContainer 
       ref={ SaNavigation.ref }
@@ -57,12 +90,12 @@ export default function App() {
         updateRouteName()
       }}
     > 
-      <Tab.Navigator>
-        <Tab.Screen name="Dashboard" component={ Dashboard } />
-        <Tab.Screen name="Operations" component={ Operations } />
-        <Tab.Screen name="Statistics" component={ Statistics } />
-        <Tab.Screen name="Bills" component={ Bills } />
-      </Tab.Navigator>
+      <Drawer.Navigator initialRouteName="Dashboard">
+      <Drawer.Screen name="Home" component={ Home } />
+
+        {/* <Drawer.Screen name="Dashborad" component={ Dashboard } /> */}
+        <Drawer.Screen name="Limits" component={ Limits } />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }

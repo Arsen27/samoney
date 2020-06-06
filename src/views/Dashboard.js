@@ -13,7 +13,7 @@ export default ({ route }) => {
       <ScrollView style={ styles.content }>
         <SaTopBar route={ route } />
         <Balance />   
-        <BillsList 
+        <BillsList
           style={{ marginTop: 40 }}
         />
         <OperationsList 

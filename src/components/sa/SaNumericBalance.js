@@ -3,6 +3,9 @@ import { Text, View } from 'react-native'
 
 import { SaNumeric, SaColors } from './'
 
+import { numericSpaceFilter } from '../../utils/filters'
+
+
 export default ({ balance, size, weight }) => {
   let sym
   let symColor
@@ -21,9 +24,6 @@ export default ({ balance, size, weight }) => {
   if ( num < 0 ) {
     num *= -1
   } 
-  if ( num > 1000 ) {
-    num = num.toString().slice(0, -3) + ' ' + num.toString().slice(-3)
-  }
 
   return (
     <View>
@@ -32,7 +32,7 @@ export default ({ balance, size, weight }) => {
         weight={ weight || 'bold' }
       >
         <Text style={ symColor && { color: symColor }}>{ sym }</Text>
-        { num }
+        { numericSpaceFilter(num) }
       </SaNumeric>
     </View>
   )

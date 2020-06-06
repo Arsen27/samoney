@@ -37,11 +37,21 @@ export default ({ style }) => {
   }
 
   const listItems = DATA.map(item => 
-    <BillsListItem key={ item.id } name={ item.name } balance={ item.balance } type={ item.type } />
+    <BillsListItem 
+      key={ item.id } 
+      name={ item.name } 
+      balance={ item.balance } 
+      type={ item.type } 
+    />
   )
 
   const rectItems = DATA.map(item => 
-    <BillsRectItem key={ item.id } name={ item.name } balance={ item.balance } type={ item.type } />
+    <BillsRectItem 
+      key={ item.id } 
+      name={ item.name } 
+      balance={ item.balance } 
+      type={ item.type } 
+    />
   )
   
   return (
