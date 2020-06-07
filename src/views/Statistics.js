@@ -5,11 +5,11 @@ import { SaTopBar, SaText, SaColors, SaTitle } from '../components/sa'
 
 import { CalendarChart } from '../components/statistics'
 
-export default ({ route }) => {
+export default ({ route, navigation }) => {
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.content }>
-        <SaTopBar route={ route } />
+        <SaTopBar navigation={ navigation } route={ route } />
 
         <View style={ styles.limits }>
           <SaText size={18}>Limit</SaText>

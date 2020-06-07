@@ -5,11 +5,11 @@ import { SaTopBar } from '../components/sa'
 
 import { OperationsList } from '../components/operations'
 
-export default ({ route }) => {
+export default ({ route, navigation }) => {
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.content }>
-        <SaTopBar route={ route } />
+        <SaTopBar navigation={ navigation } route={ route } />
         <OperationsList style={{ marginTop: 30 }} headerType='filter' />
       </ScrollView>
     </View>

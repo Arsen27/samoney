@@ -1,17 +1,20 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
+import { StyleSheet, View, TouchableOpacity } from 'react-native'
 import { SaText, SaColors, SaColoredIcon } from './'
 
 import Constants from "expo-constants"
 
-export default ({ route }) => {
+export default ({ route, navigation }) => {
   return (
     <View style={ styles.container }>
       <View style={ styles.left }>
-        <View style={ styles.menuToggle }>
+        <TouchableOpacity 
+          style={ styles.menuToggle }
+          onPress={() => navigation.toggleDrawer()}
+        >
           <View style={ styles.topLine }></View>
           <View style={ styles.bottomLine }></View>
-        </View>
+        </TouchableOpacity>
       </View>
       <SaText 
         align='center'

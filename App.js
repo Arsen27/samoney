@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 import * as Font from 'expo-font'
 import { AppLoading } from 'expo'
 
@@ -7,9 +7,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import { SaNavigation } from './src/components/sa' 
+import { SaNavigation, SaTopBar } from './src/components/sa' 
 
 import { Dashboard, Operations, Statistics, Bills, Limits } from './src/views'
+import SaTabBar from './src/components/sa/SaTabBar';
 
 async function loadApplication() {
   await Font.loadAsync({
@@ -55,6 +56,7 @@ export default function App() {
   const Home = () => {
     return (
       <Tab.Navigator
+        tabBar={ props => <SaTabBar {...props}/> }
         // screenOptions={({ route }) => ({
         //   tabBarIcon: ({ focused, color, size }) => {
         //     let iconName;

@@ -56,11 +56,11 @@ const DATA = [
   },
 ]
 
-export default ({ route }) => {
+export default ({ route, navigation }) => {
   return (
     <View style={ styles.container }>
       <ScrollView style={ styles.content }>
-        <SaTopBar route={ route } />
+        <SaTopBar navigation={ navigation } route={ route } />
         <View>
           <LimitsList 
             type='spendings'
